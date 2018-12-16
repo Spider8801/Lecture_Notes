@@ -1,14 +1,24 @@
 package com.pythonanywhere.cozinfinitybehind.lecture_notes.models;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class PDFModel {
+public class PDFModel implements Serializable {
 
     String name;
     int materialId;
-    HashMap<String, String> author = new HashMap<String, String>();
-    LinkedList<Page> pages = new LinkedList<Page>();
+    String author_name;
+    String author_institute;
+    HashMap<Integer,String> pages;
+
+    public PDFModel(String name, int materialId, String author_name, String author_institute, HashMap<Integer, String> pages) {
+        this.name = name;
+        this.materialId = materialId;
+        this.author_name = author_name;
+        this.author_institute = author_institute;
+        this.pages = pages;
+    }
 
     public String getName() {
         return name;
@@ -26,25 +36,27 @@ public class PDFModel {
         this.materialId = materialId;
     }
 
-    public HashMap<String, String> getAuthor() {
-        return author;
+    public String getAuthor_name() {
+        return author_name;
     }
 
-    public void setAuthor(HashMap<String, String> author) {
-        this.author = author;
+    public void setAuthor_name(String author_name) {
+        this.author_name = author_name;
     }
 
-    public LinkedList<Page> getPages() {
+    public String getAuthor_institute() {
+        return author_institute;
+    }
+
+    public void setAuthor_institute(String author_institute) {
+        this.author_institute = author_institute;
+    }
+
+    public HashMap<Integer, String> getPages() {
         return pages;
     }
 
-    public void setPages(LinkedList<Page> pages) {
+    public void setPages(HashMap<Integer, String> pages) {
         this.pages = pages;
     }
-}
-
-
-class Page{
-    int page;
-    String url;
 }
